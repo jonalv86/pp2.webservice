@@ -28,11 +28,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
       <version>4.8.2</version>
       <scope>test</scope>
     </dependency>
-    <!--dependency>
+    <dependency>
 	  <groupId>com.sun.jersey</groupId>
 	  <artifactId>jersey-server</artifactId>
 	  <version>1.9</version>
-	</dependency-->
+	</dependency>
         
   </dependencies>
   

@@ -29,11 +29,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
       <scope>test</scope>
     </dependency>
     <dependency>
-	  <groupId>javax.ws.rs</groupId>
-	  <artifactId>javax.ws.rs-api</artifactId>
-	  <version>2.1-m05</version>
-	</dependency>  
-	
+	  <groupId>com.sun.jersey</groupId>
+	  <artifactId>jersey-server</artifactId>
+	  <version>1.19.3</version>
+	</dependency>
+        
   </dependencies>
   
   <build>

@@ -7,7 +7,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
  
-@Path("/sapo")
+//@Path("/sapo")
 public class RESTfulSapoPepe 
 {
 	/*
@@ -19,7 +19,7 @@ public class RESTfulSapoPepe
 				"<p>RESTful Service is runeando ... <br>Ping @ " + new Date().toString() + "</p<br>";
 		return Response.status(200).entity(output).build();
 	}
-	*/
+	
 	
 	@Path("/saludo/{c}/{d}")
 	@GET
@@ -29,4 +29,5 @@ public class RESTfulSapoPepe
 				"<p>RESTful Service is runeando ... <br> " + new Date().toString() + "</p<br>";
 		return Response.status(200).entity(output).build();
 	}
+	*/
 }

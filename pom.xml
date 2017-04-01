@@ -25,37 +25,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.8.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
 	  <groupId>com.sun.jersey</groupId>
 	  <artifactId>jersey-server</artifactId>
 	  <version>1.9</version>
-	</dependency>
-	<dependency>
-      <groupId>javax</groupId>
-      <artifactId>javaee-web-api</artifactId>
-      <version>6.0</version>
-      <scope>provided</scope>
-	</dependency>
-	<dependency>
-      <groupId>javax.ws.rs</groupId>
-      <artifactId>jsr311-api</artifactId>
-      <version>1.1.1</version>
-	</dependency>
-	<dependency>
-           <groupId>javax.ws.rs</groupId>
-           <artifactId>javax.ws.rs-api</artifactId>
-           <version>2.0.1</version>
-        </dependency>
-    <dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <version>3.0.1</version>
-    <scope>provided</scope>
-</dependency>
-        
+	</dependency>  
   </dependencies>
   
   <build>

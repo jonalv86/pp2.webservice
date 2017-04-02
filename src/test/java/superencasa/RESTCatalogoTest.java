@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.superencasa.modelo.FacadeCatalogo;
+import com.superencasa.modelo.Catalogo;
 
 public class RESTCatalogoTest 
 {
@@ -13,7 +13,7 @@ public class RESTCatalogoTest
 	@Test
 	public void testCatalogoConCategoriaInexistente()
 	{
-		FacadeCatalogo catalogo = new FacadeCatalogo();
+		Catalogo catalogo = new Catalogo(-1);
 		//catalogo = catalogo.obtenerCatalogoPorIdCategoria(-1);
 		//assertEquals(null, catalogo.Categoria);
 		//assertTrue(true, catalogo.Productos);

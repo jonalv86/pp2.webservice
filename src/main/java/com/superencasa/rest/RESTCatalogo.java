@@ -5,6 +5,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import com.superencasa.modelo.Catalogo;
+
 @Path("/catalogo")
 public class RESTCatalogo 
 {
@@ -13,7 +15,7 @@ public class RESTCatalogo
 	@Produces("application/json")
 	public String obtenerCatalogo(@PathParam("i") String i)
 	{
-		
+		Catalogo catalogoPedido = new Catalogo(Integer.parseInt(i)); 
 		return null;
 	}
 }

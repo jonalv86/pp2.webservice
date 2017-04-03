@@ -11,6 +11,7 @@ import com.superencasa.modelo.Producto;
 
 public class CatalogoTest 
 {
+	
 	DatosTemp dbTemp = Constantes.dbTemp;
 	Catalogo catalogoIncorrecto = new Catalogo(-1);
 	Catalogo catalogoCorrecto = new Catalogo(1);
@@ -32,7 +33,7 @@ public class CatalogoTest
 	public void testCatalogoCorrecto()
 	{
 		assertEquals(new Integer(1), catalogoCorrecto.getCategoria().getIdCategoria());
-		assertNotEquals(new Integer(5), catalogoCorrecto.getCategoria().getIdCategoria());
+		//assertNotEquals(new Integer(5), catalogoCorrecto.getCategoria().getIdCategoria());	//A maven no le gusta el assertNotEquals
 	}
 	
 	//Testear que dado un id, el Catalogo obtenido tiene un lista de categorias con idCategoriaPadre 
@@ -56,4 +57,5 @@ public class CatalogoTest
 			assertEquals(idCategoria, p.getIdCategoria());
 		}
 	}
+	
 }

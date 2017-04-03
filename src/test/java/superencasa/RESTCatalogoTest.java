@@ -15,21 +15,28 @@ public class RESTCatalogoTest
 	String jsonSinResultado = RESTCatalogo.obtenerCatalogo("no se admiten string que no sean numeros");
 	String jsonSinResultado2 = RESTCatalogo.obtenerCatalogo("-1");
 	String jsonConResultado = RESTCatalogo.obtenerCatalogo("1");
+	String jsonMenuPrincipal = RESTCatalogo.obtenerMenuPrincipal();
 	
 	//Testear que si el parametro no es un int devuelve el mismo resultado que si no puede armar el catalogo:
 	//Categoria null y lista de productos vacia
 	
 	@Test
-	public void parametroErroneo()
+	public void testLlamadaConParametroErroneo()
 	{
-		//assertEquals(jsonEsperado, jsonSinResultado);	//Este no sirve por si se agregan cosas al json
+		//assertEquals(jsonEsperado, jsonSinResultado);	//Este no sirve si se agregan cosas al json
 		assertTrue(jsonSinResultado.contains(jsonEsperado));
 		assertFalse(jsonConResultado.contains(jsonEsperado));
 	}
 	
 	@Test
-	public void categoriaInexistente()
+	public void testLlamadaCategoriaInexistente()
 	{
 		assertTrue(jsonSinResultado2.contains(jsonEsperado));
+	}
+	
+	@Test
+	public void testLlamadaCategoriasPrincipales()
+	{
+		assertFalse(jsonMenuPrincipal.contains("idCategoriaPadre"));
 	}
 }

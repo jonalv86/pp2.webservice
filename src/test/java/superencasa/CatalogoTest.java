@@ -2,16 +2,18 @@ package superencasa;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import com.superencasa.helpers.Constantes;
 import com.superencasa.modelo.Catalogo;
+import com.superencasa.modelo.Categoria;
 import com.superencasa.modelo.DatosTemp;
 import com.superencasa.modelo.Producto;
 
 public class CatalogoTest 
 {
-	
 	DatosTemp dbTemp = Constantes.dbTemp;
 	Catalogo catalogoIncorrecto = new Catalogo(-1);
 	Catalogo catalogoCorrecto = new Catalogo(1);
@@ -33,7 +35,7 @@ public class CatalogoTest
 	public void testCatalogoCorrecto()
 	{
 		assertEquals(new Integer(1), catalogoCorrecto.getCategoria().getIdCategoria());
-		//assertNotEquals(new Integer(5), catalogoCorrecto.getCategoria().getIdCategoria());	//A maven no le gusta el assertNotEquals
+		assertNotEquals(new Integer(5), catalogoCorrecto.getCategoria().getIdCategoria());	//A maven no le gusta el assertNotEquals
 	}
 	
 	//Testear que dado un id, el Catalogo obtenido tiene un lista de categorias con idCategoriaPadre 
@@ -55,6 +57,17 @@ public class CatalogoTest
 		for(Producto p : catalogoCorrecto.getProductos())
 		{
 			assertEquals(idCategoria, p.getIdCategoria());
+		}
+	}
+	
+	//Testear que al obtenerCategoriasPrinciipales ninguna categoria tiene idCategoriaPadre.
+	@Test
+	public void testCategoriasPrincipales()
+	{
+		ArrayList<Categoria> categorias = dbTemp.obtenerCategoriasGenerales();
+		for(Categoria c : categorias)
+		{
+			assertEquals(null, c.getIdCategoriaPadre());
 		}
 	}
 	

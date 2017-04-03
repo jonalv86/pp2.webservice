@@ -63,4 +63,17 @@ public class DatosTemp
 		}
 		return resultados;
 	}
+
+	public ArrayList<Categoria> obtenerCategoriasGenerales() 
+	{
+		ArrayList<Categoria> resultados = new ArrayList<Categoria>();
+		for(Categoria c : categoriasTemp)
+		{
+			if(c.getIdCategoriaPadre() == null)
+			{
+				resultados.add(c);
+			}
+		}
+		return resultados;
+	}
 }

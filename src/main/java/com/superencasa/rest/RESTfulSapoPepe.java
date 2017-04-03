@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 @Path("/sapo")
 public class RESTfulSapoPepe 
 {
-	
+	/*
 	@GET
 	@Produces("text/html")
 	public Response getStartingPage()
@@ -29,5 +29,5 @@ public class RESTfulSapoPepe
 				"<p>RESTful Service is runeando ... <br> " + new Date().toString() + "</p<br>";
 		return Response.status(200).entity(output).build();
 	}
-	
+	*/
 }

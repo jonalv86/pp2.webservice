@@ -10,6 +10,22 @@ public class Catalogo
 	private ArrayList<Producto> productos = new ArrayList<Producto>();
 	//private ArrayList<Categoria> categoriasHijo = new ArrayList<Categoria>();	//No aplica por el momento.
 	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public ArrayList<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(ArrayList<Producto> productos) {
+		this.productos = productos;
+	}
+
 	public Catalogo(int idCategoria)
 	{
 		DatosTemp dbTemp = Constantes.dbTemp;	//Esto parece entity framework.

@@ -16,7 +16,7 @@ public class RESTCatalogo
 	@Path("/obtenerCatalogo/{i}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public String obtenerCatalogo(@PathParam("i") String i)
+	public static String obtenerCatalogo(@PathParam("i") String i)
 	{
 		int parametro = Validador.validarParametroInt(i);
 		Catalogo catalogoPedido = new Catalogo(parametro);

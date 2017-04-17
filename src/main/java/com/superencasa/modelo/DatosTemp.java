@@ -1,16 +1,20 @@
 package com.superencasa.modelo;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class DatosTemp 
 {
 	private ArrayList<Categoria> categoriasTemp = new ArrayList<Categoria>();
 	private ArrayList<Producto> productosTemp = new ArrayList<Producto>();
+	private List<Producto> carritoTemp = new LinkedList<Producto>();
 	
 	public DatosTemp()
 	{
 		categoriasTemp = obtenerCategorias();
 		productosTemp = obtenerProductos();
+		carritoTemp = obtenerCarrito();
 	}
 	
 	public ArrayList<Categoria> obtenerCategorias()
@@ -36,6 +40,19 @@ public class DatosTemp
 			productosTemp.add(new Producto(6, "Papa", 3));
 		}
 		return productosTemp;
+	}
+	
+	public List<Producto> obtenerCarrito () {
+		
+		if (carritoTemp.isEmpty()) {
+			carritoTemp.add(new Producto(1, "Queso", 1));
+			carritoTemp.add(new Producto(2, "Leche", 1));
+			carritoTemp.add(new Producto(3, "Banana", 2));
+			carritoTemp.add(new Producto(4, "Manzana", 2));
+			carritoTemp.add(new Producto(5, "Zapallito", 3));
+			carritoTemp.add(new Producto(6, "Papa", 3));
+		}
+		return carritoTemp;
 	}
 
 	public Categoria obtenerCategoriaPorId(int i) 

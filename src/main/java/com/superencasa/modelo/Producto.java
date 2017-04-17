@@ -8,32 +8,36 @@ public class Producto
 	
 	public Producto(int idProducto, String nombre, int idCategoria)
 	{
-		this.setIdProducto(idProducto);
-		this.setNombre(nombre);
-		this.setIdCategoria(idCategoria);
+		this.idProducto = idProducto;
+		this.nombre = nombre;
+		this.idCategoria = idCategoria;
 	}
 
 	public int getIdProducto() {
 		return idProducto;
 	}
 
-	public void setIdProducto(int idProducto) {
-		this.idProducto = idProducto;
-	}
-
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public int getIdCategoria() {
+		return idCategoria;
+	}
+	
+	/* inmutables
+	
+	public void setIdProducto(int idProducto) {
+		this.idProducto = idProducto;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public int getIdCategoria() {
-		return idCategoria;
-	}
-
 	public void setIdCategoria(int idCategoria) {
 		this.idCategoria = idCategoria;
-	}
+	} 
+	
+	*/
 }

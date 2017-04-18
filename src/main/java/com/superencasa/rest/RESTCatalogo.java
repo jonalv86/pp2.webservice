@@ -3,6 +3,7 @@ package com.superencasa.rest;
 import java.util.ArrayList;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -16,8 +17,8 @@ import com.superencasa.modelo.Categoria;
 import com.superencasa.modelo.DatosTemp;
 
 @Path("/catalogo")
-public class RESTCatalogo 
-{
+public class RESTCatalogo {
+	
 	@Path("/obtenerCatalogo/{i}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

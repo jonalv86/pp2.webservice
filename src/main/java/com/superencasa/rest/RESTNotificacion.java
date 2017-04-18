@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 public class RESTNotificacion {
 	
 	@Path("/sincronizado")
-	@GET
+	@GET // deberia ser POST?
 	public static String sincroCorrecta()
 	{	
 		return "Se sincronizo correctamente.";

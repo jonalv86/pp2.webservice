@@ -13,10 +13,7 @@ public class RESTCarritoTest {
 		String jsonCliente = "[{\"idProducto\":4, \"nombre\":\"Manzana\",\"idCategoria\":2},{\"idProducto\":2, \"nombre\":\"manzana\",\"idCategoria\":1}]";
 		boolean actual = RESTCarrito.sincronizar(jsonCliente);
 		boolean esperado = true;
-		assertEquals(esperado, actual);
-		
-		
-		
+		assertEquals(esperado, actual);	
 	}
 
 }

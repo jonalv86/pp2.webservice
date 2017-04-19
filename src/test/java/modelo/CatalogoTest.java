@@ -1,4 +1,4 @@
-package superencasa;
+package modelo;
 
 import static org.junit.Assert.*;
 

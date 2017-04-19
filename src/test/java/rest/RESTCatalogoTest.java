@@ -1,4 +1,4 @@
-package superencasa;
+package rest;
 
 import static org.junit.Assert.*;
 

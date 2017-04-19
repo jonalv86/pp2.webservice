@@ -18,7 +18,7 @@ public class CarritoUOW implements UnitOfWork {
 	}
 
 	public void insertarNuevo(Producto producto) {
-		if (this.nuevos.contains(producto)) {
+		if (!this.nuevos.contains(producto)) {
 			this.nuevos.add(producto);
 		}
 	}
@@ -36,9 +36,10 @@ public class CarritoUOW implements UnitOfWork {
 	}
 
 	@Override
-	public void commit() {
+	public boolean commit() {
 		// TODO Auto-generated method stub
 		// for each en cada lista: insert, update o delete de la db
+		return true;
 	}
 
 	@Override
@@ -53,4 +54,18 @@ public class CarritoUOW implements UnitOfWork {
 		this.eliminados.clear();
 	}
 
+	public List<Producto> getNuevos () {
+		return this.nuevos;
+	}
+
+	public List<Producto> getModificados () {
+		return this.modificados;
+	}
+	
+	public List<Producto> getEliminados () {
+		return this.eliminados;
+	}
+	
 }
+
+

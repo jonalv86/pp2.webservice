@@ -19,7 +19,10 @@ public class RESTCarrito {
 	@Path("/sincronizar/{json}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public void sincronizar (@PathParam("json") String jsonCliente) {
+	public static boolean sincronizar (@PathParam("json") String jsonCliente) {
+		
+//		if (dispositivo.estaConectado()) {	
+//		}
 		
 		CarritoUOW carritoUOW = new CarritoUOW (); // este es el que va a commitear los cambios
 
@@ -51,7 +54,9 @@ public class RESTCarrito {
 			}
 		}
 		
-		carritoUOW.commit();
+		if (carritoUOW.commit())
+			return true;
+		else return false;
 	}
 		
 }

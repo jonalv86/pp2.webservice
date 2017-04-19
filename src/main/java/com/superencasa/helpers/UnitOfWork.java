@@ -8,7 +8,7 @@ public interface UnitOfWork {
 //	
 //	public void registrarRemoved();
 	
-	public void commit();
+	public boolean commit();
 	
 	public void rollback();
 	

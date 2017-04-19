@@ -71,8 +71,8 @@ public class DatosTemp
 		if (carritoClienteTemp.isEmpty()) {
 			carritoClienteTemp.add(new Producto(1, "Anana", 2));
 			carritoClienteTemp.add(new Producto(2, "Manzana", 2));
-			carritoClienteTemp.add(new Producto(2, "Naranja", 2));
-			carritoClienteTemp.add(new Producto(2, "Kiwi", 2));
+			carritoClienteTemp.add(new Producto(3, "Naranja", 2));
+			carritoClienteTemp.add(new Producto(4, "Kiwi", 2));
 		}
 		return carritoClienteTemp;
 	}

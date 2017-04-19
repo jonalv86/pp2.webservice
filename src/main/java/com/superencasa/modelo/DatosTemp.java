@@ -4,17 +4,21 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 public class DatosTemp 
 {
 	private ArrayList<Categoria> categoriasTemp = new ArrayList<Categoria>();
 	private ArrayList<Producto> productosTemp = new ArrayList<Producto>();
-	private List<Producto> carritoTemp = new LinkedList<Producto>();
+	private List<Producto> carritoClienteTemp = new LinkedList<Producto>();
+	private List<Producto> carritoServerTemp = new LinkedList<Producto>();
 	
 	public DatosTemp()
 	{
 		categoriasTemp = obtenerCategorias();
 		productosTemp = obtenerProductos();
-		carritoTemp = obtenerCarrito();
+		carritoClienteTemp = obtenerCarritoCliente();
+		carritoServerTemp = obtenerCarritoServer();
 	}
 	
 	public ArrayList<Categoria> obtenerCategorias()
@@ -42,17 +46,40 @@ public class DatosTemp
 		return productosTemp;
 	}
 	
-	public List<Producto> obtenerCarrito () {
+	public List<Producto> obtenerCarritoServer () {
 		
-		if (carritoTemp.isEmpty()) {
-			carritoTemp.add(new Producto(1, "Queso", 1));
-			carritoTemp.add(new Producto(2, "Leche", 1));
-			carritoTemp.add(new Producto(3, "Banana", 2));
-			carritoTemp.add(new Producto(4, "Manzana", 2));
-			carritoTemp.add(new Producto(5, "Zapallito", 3));
-			carritoTemp.add(new Producto(6, "Papa", 3));
+		if (carritoServerTemp.isEmpty()) {
+			carritoServerTemp.add(new Producto(1, "Queso", 1));
+			carritoServerTemp.add(new Producto(2, "Leche", 1));
+			carritoServerTemp.add(new Producto(3, "Banana", 2));
+			carritoServerTemp.add(new Producto(4, "Manzana", 2));
+			carritoServerTemp.add(new Producto(5, "Zapallito", 3));
+			carritoServerTemp.add(new Producto(6, "Papa", 3));
 		}
-		return carritoTemp;
+		return carritoServerTemp;
+	}
+	
+	public String obtenerJsonCarritoServer () {
+		Gson gson = new Gson();
+		return gson.toJson(carritoServerTemp);
+	}
+	
+	public List<Producto> obtenerCarritoCliente () {
+		
+		this.carritoClienteTemp.clear();
+		
+		if (carritoClienteTemp.isEmpty()) {
+			carritoClienteTemp.add(new Producto(1, "Anana", 2));
+			carritoClienteTemp.add(new Producto(2, "Manzana", 2));
+			carritoClienteTemp.add(new Producto(2, "Naranja", 2));
+			carritoClienteTemp.add(new Producto(2, "Kiwi", 2));
+		}
+		return carritoClienteTemp;
+	}
+	
+	public String obtenerJsonCarritoCliente () {
+		Gson gson = new Gson();
+		return gson.toJson(carritoClienteTemp);
 	}
 
 	public Categoria obtenerCategoriaPorId(int i) 

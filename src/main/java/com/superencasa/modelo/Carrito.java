@@ -49,4 +49,10 @@ public class Carrito {
 		return true;
 	}
 	
+	public void llenarCarrito (List<Producto> productos) {
+		for (int i = 0; i < productos.size(); i++) {
+			this.agregarItem(productos.get(i));
+		}
+	}
+	
 }

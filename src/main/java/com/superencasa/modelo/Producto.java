@@ -25,6 +25,11 @@ public class Producto
 		return idCategoria;
 	}
 	
+	@Override
+	public String toString() {
+		return this.idProducto + " " + this.nombre + " " + this.idCategoria;
+	}
+	
 	/* inmutables
 	
 	public void setIdProducto(int idProducto) {

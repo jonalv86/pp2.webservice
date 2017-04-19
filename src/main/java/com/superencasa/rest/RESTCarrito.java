@@ -1,47 +1,57 @@
 package com.superencasa.rest;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.superencasa.helpers.CarritoUOW;
+import com.superencasa.helpers.Conversor;
 import com.superencasa.modelo.Carrito;
+import com.superencasa.modelo.DatosTemp;
 import com.superencasa.modelo.Producto;
 
 @Path("/carrito")
 public class RESTCarrito {
 	
-	public void sincronizar (Carrito remoto, Carrito local) {
+	
+	@Path("/sincronizar/{json}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public void sincronizar (@PathParam("json") String jsonCliente) {
 		
 		CarritoUOW carritoUOW = new CarritoUOW (); // este es el que va a commitear los cambios
-		remoto = getCarritoRemoto();
-		local = getCarritoLocal();
+
+		Carrito carritoCliente = new Carrito();
+		Carrito carritoServer = new Carrito();
 		
-		for (int i = 0; i < local.getCantidad(); i++) {
-			Producto actual = local.getItems().get(i);
-			if (remoto.loContiene(actual)) {
+		String jsonServer = new DatosTemp().obtenerJsonCarritoServer();
+				
+		try {
+			carritoCliente.llenarCarrito(Conversor.conversorProductos(jsonCliente));
+			carritoServer.llenarCarrito(Conversor.conversorProductos(jsonServer));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		for (int i = 0; i < carritoCliente.getCantidad(); i++) {
+			Producto actual = carritoCliente.getItems().get(i);
+			if (carritoServer.loContiene(actual)) {
 				carritoUOW.updateModificado(actual);				
 			} else {
 				carritoUOW.insertarNuevo(actual);
 			}
 		}
 		
-		for (int i = 0; i < remoto.getCantidad(); i++) {
-			Producto actual = remoto.getItems().get(i);
-			if (!local.loContiene(actual)) {
+		for (int i = 0; i < carritoServer.getCantidad(); i++) {
+			Producto actual = carritoServer.getItems().get(i);
+			if (!carritoCliente.loContiene(actual)) {
 				carritoUOW.deleteEliminado(actual);
 			}
 		}
 		
 		carritoUOW.commit();
 	}
-	
-	public Carrito getCarritoLocal() {
-		// TODO viene de la app
-		return new Carrito();
-	}
-	
-	public Carrito getCarritoRemoto() {
-		// TODO viene de la db
-		return new Carrito();
-	}
-	
+		
 }

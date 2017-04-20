@@ -2,16 +2,16 @@ package com.superencasa.helpers;
 
 public interface UnitOfWork {
 	
-//	public void registrarNew ();
-//	
-//	public void registrarDirty();
-//	
-//	public void registrarRemoved();
-	
-	public boolean commit();
-	
-	public void rollback();
-	
-	public void clear();
+    public void registrarNew (Object o);
+
+    public void registrarDirty(Object o);
+
+    public void registrarRemoved(Object o);
+
+    public boolean commit();
+
+    public boolean rollback();
+
+    public boolean clear();
 
 }

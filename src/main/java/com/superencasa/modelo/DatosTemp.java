@@ -10,8 +10,7 @@ public class DatosTemp
 {
 	private ArrayList<Categoria> categoriasTemp = new ArrayList<Categoria>();
 	private ArrayList<Producto> productosTemp = new ArrayList<Producto>();
-	private List<Producto> carritoClienteTemp = new LinkedList<Producto>();
-//	private List<Producto> carritoServerTemp = new LinkedList<Producto>();
+	private Carrito carritoClienteTemp = new Carrito();
 	private Carrito carritoServerTemp = new Carrito();
 	
 	public DatosTemp()
@@ -66,16 +65,13 @@ public class DatosTemp
 		return gson.toJson(carritoServerTemp);
 	}
 	
-	public List<Producto> obtenerCarritoCliente () {
+	public Carrito obtenerCarritoCliente () {
 		
-		this.carritoClienteTemp.clear();
+		carritoClienteTemp.agregarItem(new Producto(1, "Anana", 2));
+		carritoClienteTemp.agregarItem(new Producto(2, "Manzana", 2));
+		carritoClienteTemp.agregarItem(new Producto(3, "Naranja", 2));
+		carritoClienteTemp.agregarItem(new Producto(4, "Kiwi", 2));
 		
-		if (carritoClienteTemp.isEmpty()) {
-			carritoClienteTemp.add(new Producto(1, "Anana", 2));
-			carritoClienteTemp.add(new Producto(2, "Manzana", 2));
-			carritoClienteTemp.add(new Producto(3, "Naranja", 2));
-			carritoClienteTemp.add(new Producto(4, "Kiwi", 2));
-		}
 		return carritoClienteTemp;
 	}
 	

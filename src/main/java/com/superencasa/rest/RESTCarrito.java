@@ -15,43 +15,16 @@ public class RESTCarrito {
 	@Path("/sincronizar/{json}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public static boolean sincronizar (@PathParam("json") String jsonCliente) {
+	public static boolean sincronizar (@PathParam("json") String jsonClienteUOW) {
 		
+		// System.out.println(jsonClienteUOW);
+		
+		// TODO revisar
 		Gson gson = new Gson();
-		CarritoUOW carritoUOW = gson.fromJson(jsonCliente, CarritoUOW.class);
+		CarritoUOW carritoUOW = gson.fromJson(jsonClienteUOW, CarritoUOW.class);
 		
-		carritoUOW.commit();
+		return carritoUOW.commit() ? carritoUOW.clear() : carritoUOW.rollback();
 		
-		/* CarritoUOW carritoUOW = new CarritoUOW (); // este es el que va a commitear los cambios
-
-		Carrito carritoCliente = new Carrito();
-		Carrito carritoServer = new Carrito();
-		
-		DatosTemp dbTemp = Constantes.dbTemp;
-		carritoServer = dbTemp.obtenerCarritoServer();
-				
-		try {
-			carritoCliente.llenarCarrito(Conversor.conversorProductos(jsonCliente));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		for (int i = 0; i < carritoServer.getCantidad(); i++) {
-			Producto actual = carritoServer.getItems().get(i);
-			int index = carritoCliente.getItems().indexOf(actual);
-			try {
-				carritoUOW.updateModificado(carritoCliente.getItems().get(index));
-				carritoCliente.getItems().remove(index);
-			} catch (Exception e) {
-				carritoUOW.deleteEliminado(actual);
-			}
-		}
-		
-		carritoUOW.getNuevos().addAll(carritoServer.getItems()); */
-		
-		if (carritoUOW.commit())
-			return true;
-		else return false;
 	}
 		
 }

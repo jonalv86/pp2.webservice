@@ -1,70 +1,72 @@
 package com.superencasa.helpers;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.superencasa.modelo.Producto;
 
 public class CarritoUOW implements UnitOfWork {
 	
-	List<Producto> nuevos;
-	List<Producto> modificados;
-	List<Producto> eliminados;
-	
-	public CarritoUOW() {
-		this.nuevos = new LinkedList<Producto>();
-		this.modificados = new LinkedList<Producto>();
-		this.eliminados = new LinkedList<Producto>();
-	}
+    private Set<Producto> nuevos;
+    private Set<Producto> modificados;
+    private Set<Producto> eliminados;
 
-	public void insertarNuevo(Producto producto) {
-		if (!this.nuevos.contains(producto)) {
-			this.nuevos.add(producto);
-		}
-	}
-	
-	public void updateModificado (Producto producto) {
-		if (!this.modificados.contains(producto)) {
-			this.modificados.add(producto);
-		}
-	}
-	
-	public void deleteEliminado (Producto producto) {
-		if (!this.eliminados.contains(producto)) {
-			this.eliminados.add(producto);
-		}
-	}
+    public CarritoUOW() {
+        this.nuevos = new HashSet<Producto>();
+        this.modificados = new HashSet<Producto>();
+        this.eliminados = new HashSet<Producto>();
+    }
 
-	@Override
-	public boolean commit() {
-		// TODO Auto-generated method stub
-		// for each en cada lista: insert, update o delete de la db
-		return true;
-	}
+    @Override
+    public void registrarNew(Object o) {
+        this.nuevos.add((Producto) o);
+    }
 
-	@Override
-	public void rollback() {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public void registrarDirty(Object o) {
+        this.modificados.add((Producto) o);
+    }
 
-	@Override
-	public void clear() {
-		this.nuevos.clear();
-		this.modificados.clear();
-		this.eliminados.clear();
-	}
+    @Override
+    public void registrarRemoved(Object o) {
+        this.eliminados.add((Producto) o);
+    }
 
-	public List<Producto> getNuevos () {
-		return this.nuevos;
-	}
+    @Override
+    public boolean commit() {
+    	// TODO conexion db
+    	return true;
+    }
 
-	public List<Producto> getModificados () {
-		return this.modificados;
-	}
-	
-	public List<Producto> getEliminados () {
-		return this.eliminados;
-	}
+    @Override
+    public boolean rollback() {
+    	// TODO
+    	return true;
+    }
+
+    @Override
+    public boolean clear() {
+        this.nuevos.clear();
+        this.modificados.clear();
+        this.eliminados.clear();
+        return true;
+    }
+
+    public boolean isEmpty () {
+        return this.nuevos.isEmpty() && this.modificados.isEmpty()  && this.eliminados.isEmpty();
+    }
+    
+    public Set<Producto> getNuevos () {
+    	return this.nuevos;
+    }
+    
+    public Set<Producto> getModificados () {
+    	return this.nuevos;
+    }
+    
+    public Set<Producto> getEliminados () {
+    	return this.nuevos;
+    }
 	
 }
 

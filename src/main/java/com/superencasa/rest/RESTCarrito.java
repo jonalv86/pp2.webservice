@@ -26,5 +26,15 @@ public class RESTCarrito {
 		return carritoUOW.commit() ? carritoUOW.clear() : carritoUOW.rollback();
 		
 	}
+	
+	@Path("/test")
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public static String test (String s) {
+		
+		System.out.println(s);
+		return s;
+		
+	}
 		
 }

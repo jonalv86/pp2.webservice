@@ -41,6 +41,17 @@ public class CarritoUOWTest {
 		assertEquals(esperado, actual);
 		
 		this.carritoOUW.clear();
+		
+		boolean expected = true;
+		
+		boolean real = this.carritoOUW.isEmpty();
+		assertEquals(expected, real);
+		
+		real = this.carritoOUW.commit();
+		assertEquals(expected, real);
+		
+		real = this.carritoOUW.rollback();
+		assertEquals(expected, real);
 	}
 
 }

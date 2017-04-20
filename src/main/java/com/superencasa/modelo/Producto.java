@@ -52,7 +52,6 @@ public class Producto
 	}
 	
 	 
-	
 	/* inmutables
 	
 	public void setIdProducto(int idProducto) {

@@ -11,14 +11,15 @@ public class DatosTemp
 	private ArrayList<Categoria> categoriasTemp = new ArrayList<Categoria>();
 	private ArrayList<Producto> productosTemp = new ArrayList<Producto>();
 	private List<Producto> carritoClienteTemp = new LinkedList<Producto>();
-	private List<Producto> carritoServerTemp = new LinkedList<Producto>();
+//	private List<Producto> carritoServerTemp = new LinkedList<Producto>();
+	private Carrito carritoServerTemp = new Carrito();
 	
 	public DatosTemp()
 	{
 		categoriasTemp = obtenerCategorias();
 		productosTemp = obtenerProductos();
 		carritoClienteTemp = obtenerCarritoCliente();
-		carritoServerTemp = obtenerCarritoServer();
+		carritoServerTemp = inicializarCarritoServer();
 	}
 	
 	public ArrayList<Categoria> obtenerCategorias()
@@ -46,17 +47,18 @@ public class DatosTemp
 		return productosTemp;
 	}
 	
-	public List<Producto> obtenerCarritoServer () {
-		
-		if (carritoServerTemp.isEmpty()) {
-			carritoServerTemp.add(new Producto(1, "Queso", 1));
-			carritoServerTemp.add(new Producto(2, "Leche", 1));
-			carritoServerTemp.add(new Producto(3, "Banana", 2));
-			carritoServerTemp.add(new Producto(4, "Manzana", 2));
-			carritoServerTemp.add(new Producto(5, "Zapallito", 3));
-			carritoServerTemp.add(new Producto(6, "Papa", 3));
-		}
+	public Carrito inicializarCarritoServer () {
+		carritoServerTemp.agregarItem(new Producto(1, "Queso", 1));
+		carritoServerTemp.agregarItem(new Producto(2, "Leche", 1));
+		carritoServerTemp.agregarItem(new Producto(3, "Banana", 2));
+		carritoServerTemp.agregarItem(new Producto(4, "Manzana", 2));
+		carritoServerTemp.agregarItem(new Producto(5, "Zapallito", 3));
+		carritoServerTemp.agregarItem(new Producto(6, "Papa", 3));
 		return carritoServerTemp;
+	}
+	
+	public Carrito obtenerCarritoServer () {
+		return this.carritoServerTemp;
 	}
 	
 	public String obtenerJsonCarritoServer () {

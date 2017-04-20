@@ -6,53 +6,48 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.google.gson.Gson;
 import com.superencasa.helpers.CarritoUOW;
-import com.superencasa.helpers.Conversor;
-import com.superencasa.modelo.Carrito;
-import com.superencasa.modelo.DatosTemp;
-import com.superencasa.modelo.Producto;
 
 @Path("/carrito")
 public class RESTCarrito {
-	
 	
 	@Path("/sincronizar/{json}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public static boolean sincronizar (@PathParam("json") String jsonCliente) {
 		
-//		if (dispositivo.estaConectado()) {	
-//		}
+		Gson gson = new Gson();
+		CarritoUOW carritoUOW = gson.fromJson(jsonCliente, CarritoUOW.class);
 		
-		CarritoUOW carritoUOW = new CarritoUOW (); // este es el que va a commitear los cambios
+		carritoUOW.commit();
+		
+		/* CarritoUOW carritoUOW = new CarritoUOW (); // este es el que va a commitear los cambios
 
 		Carrito carritoCliente = new Carrito();
 		Carrito carritoServer = new Carrito();
 		
-		String jsonServer = new DatosTemp().obtenerJsonCarritoServer();
+		DatosTemp dbTemp = Constantes.dbTemp;
+		carritoServer = dbTemp.obtenerCarritoServer();
 				
 		try {
 			carritoCliente.llenarCarrito(Conversor.conversorProductos(jsonCliente));
-			carritoServer.llenarCarrito(Conversor.conversorProductos(jsonServer));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		for (int i = 0; i < carritoCliente.getCantidad(); i++) {
-			Producto actual = carritoCliente.getItems().get(i);
-			if (carritoServer.loContiene(actual)) {
-				carritoUOW.updateModificado(actual);				
-			} else {
-				carritoUOW.insertarNuevo(actual);
-			}
-		}
-		
 		for (int i = 0; i < carritoServer.getCantidad(); i++) {
 			Producto actual = carritoServer.getItems().get(i);
-			if (!carritoCliente.loContiene(actual)) {
+			int index = carritoCliente.getItems().indexOf(actual);
+			try {
+				carritoUOW.updateModificado(carritoCliente.getItems().get(index));
+				carritoCliente.getItems().remove(index);
+			} catch (Exception e) {
 				carritoUOW.deleteEliminado(actual);
 			}
 		}
+		
+		carritoUOW.getNuevos().addAll(carritoServer.getItems()); */
 		
 		if (carritoUOW.commit())
 			return true;

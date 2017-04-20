@@ -20,5 +20,7 @@ public class Conversor {
 	    List<Producto> productos = gson.fromJson(json, listType);
 	    return productos;
 	}
+	
+	
 		
 }

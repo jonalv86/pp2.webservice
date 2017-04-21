@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.google.gson.Gson;
 import com.superencasa.helpers.CarritoUOW;
+import com.superencasa.helpers.Conversor;
 
 @Path("/carrito")
 public class RESTCarrito {
@@ -19,22 +20,12 @@ public class RESTCarrito {
 		
 		// System.out.println(jsonClienteUOW);
 		
-		// TODO revisar
-		Gson gson = new Gson();
-		CarritoUOW carritoUOW = gson.fromJson(jsonClienteUOW, CarritoUOW.class);
+		//Gson gson = new Gson();
+		//CarritoUOW carritoUOW = gson.fromJson(jsonClienteUOW, CarritoUOW.class);
+		CarritoUOW carritoUOW = Conversor.conversorCarritoUOW(jsonClienteUOW);
+
 		
-		return carritoUOW.commit() ? carritoUOW.clear() : carritoUOW.rollback();
+		return true;//carritoUOW.commit() ? carritoUOW.clear() : carritoUOW.rollback();
 		
-	}
-	
-	@Path("/test")
-	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	public static String test (String s) {
-		
-		System.out.println(s);
-		return s;
-		
-	}
-		
+	}		
 }

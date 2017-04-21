@@ -40,8 +40,8 @@ public class CarritoUOW implements UnitOfWork {
 
     @Override
     public boolean rollback() {
-    	// TODO
-    	return true;
+    	// TODO Algun error
+    	return false;
     }
 
     @Override
@@ -67,6 +67,12 @@ public class CarritoUOW implements UnitOfWork {
     public Set<Producto> getEliminados () {
     	return this.nuevos;
     }
+    
+    @Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
 	
 }
 

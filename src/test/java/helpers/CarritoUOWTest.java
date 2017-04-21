@@ -51,7 +51,7 @@ public class CarritoUOWTest {
 		assertEquals(expected, real);
 		
 		real = this.carritoOUW.rollback();
-		assertEquals(expected, real);
+		assertEquals(false, real);
 	}
 
 }

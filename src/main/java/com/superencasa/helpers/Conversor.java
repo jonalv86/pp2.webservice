@@ -20,7 +20,10 @@ public class Conversor {
 	    List<Producto> productos = gson.fromJson(json, listType);
 	    return productos;
 	}
-	
-	
-		
+
+	public static CarritoUOW conversorCarritoUOW(String json) {
+		Gson gson = new Gson();
+		CarritoUOW carritoUOW = gson.fromJson(json, CarritoUOW.class);
+	    return carritoUOW;
+	}	
 }
